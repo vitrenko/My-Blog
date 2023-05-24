@@ -1,0 +1,19 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(126, 125, 117, 0.425);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popupInner {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    background-color: orange;
+}

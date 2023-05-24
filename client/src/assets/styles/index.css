@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: 400 20px/24px 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 700;
+    padding: 30px 20px 10px;
+    text-align: center;
+}
+
+ul { padding: 20px; }
+
+li {
+    padding: 10px;
+    margin: 10px;
+}
+
+body.night {
+    background-color: #000;
+    color: #fff;
+}
+
+body.night header nav ul {
+    background-color:cadetblue;
+}

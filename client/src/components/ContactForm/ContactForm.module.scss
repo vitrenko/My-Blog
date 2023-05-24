@@ -1,0 +1,16 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    
+    label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        input,
+        textarea {
+            width: 500px;
+        }
+    }
+}

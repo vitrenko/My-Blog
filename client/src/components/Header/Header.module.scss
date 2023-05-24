@@ -1,0 +1,43 @@
+.header {
+    nav {
+        ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            padding: 40px;
+            background-color: aquamarine;
+            list-style: none;
+            font: 700 20px/24px Arial, sans-serif;
+
+            li {
+                a {
+                    font-weight: 700;
+                    text-decoration: none;
+                    color:#fff;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+    .themeSwitcher {
+        button {
+            background-color: blue;
+            color: #fff;
+            border: none;
+            margin: 0;
+            padding: 10px;
+            transition: all .3s ease-in-out;
+            &:hover {
+                background-color: #fff;
+                color: blue;
+            }
+        }
+        
+
+    }
+}
