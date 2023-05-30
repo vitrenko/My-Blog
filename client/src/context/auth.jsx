@@ -1,6 +1,7 @@
 import { useReducer, createContext } from "react";
 import jwtDecode from "jwt-decode";
 import { allComments } from '../../../server/controllers/posts';
+import { func } from "prop-types";
 
 const initialState = {
     user: null,
@@ -29,5 +30,38 @@ function authReducer(state, action) {
                 ...state,
                 user: action.payload,
             }
+        case "LOGOUT":
+            return {
+                ...state,
+                user: null,
+            }
+        default:
+            return state;
     }
 }
+
+const AuthProvider = (props) => {
+    const [state, dispatch] = useReducer(authReducer, initialState);
+    function login(userData) {
+        localStorage.setItem("jwtDecode", userData.token);
+        dispatch({
+            type: "LOGIN",
+            payload: userData,
+        })
+    }
+
+    function logout() {
+        localStorage.removeItem("jwtDecode");
+        dispatch({type: "LOGOUT"});
+    }
+
+    return (
+        <AuthContext.Provider
+            value={{user: state.user, login, logout}}
+            {...props}
+        />
+    );
+
+}
+
+export { AuthContext, AuthProvider };
