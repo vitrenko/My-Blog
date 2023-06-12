@@ -1,34 +1,290 @@
 import express from "express";
 
-import {
-  getPosts,
-  getPost,
-  createPost,
-  updatePost,
-  deletePost,
-  AddLikeToPost,
-  RemoveLikeFromPost,
-  addCommentToPost,
-  allComments,
-  likeComment,
-  replyComment,
-  viewCount,
-} from "../controllers/posts.js";
 import { Upload } from "../middlewares/upload.js";
+import * as PostController from "../controllers/postControllers/PostController.js";
+import * as PostLikeController from "../controllers/postControllers/PostLikeController.js";
+import * as PostCommentController from "../controllers/postControllers/PostCommentController.js";
+import * as PostViewController from "../controllers/postControllers/PostViewController.js";
 
 const router = express.Router();
 
-router.get("/", getPosts);
-router.get("/:id", getPost);
-router.post("/", Upload, createPost);
-router.patch("/:id", updatePost);
-router.delete("/:id", deletePost);
-router.put("/:id/like", AddLikeToPost);
-router.delete("/:id/like", RemoveLikeFromPost);
-router.get("/:id/comments", allComments);
-router.post("/:id/comments", addCommentToPost);
-router.patch("/:id/comments/:commentId/like", likeComment);
-router.patch("/:id/comments/:commentId/reply", replyComment);
-router.patch("/:id/viewcount", viewCount);
+/**
+ * @swagger
+ * /posts:
+ *   get:
+ *     summary: Retrieve a list of posts
+ *     tags: [Posts]
+ *     responses:
+ *       '200':
+ *         description: A list of posts.
+ */
+router.get("/", PostController.getPosts);
+
+/**
+ * @swagger
+ * /posts/{id}:
+ *   get:
+ *     summary: Get a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Post data
+ *       '404':
+ *         description: Post not found
+ */
+router.get("/:id", PostController.getPost);
+
+/**
+ * @swagger
+ * /posts:
+ *   post:
+ *     summary: Create a new post
+ *     tags: [Posts]
+ *     consumes:
+ *       - multipart/form-data
+ *     requestBody:
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *               title:
+ *                 type: string
+ *               body:
+ *                 type: string
+ *               tag:
+ *                 type: string
+ *               categories:
+ *                 type: string
+ *               slug:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Successfully created post
+ */
+router.post("/", Upload, PostController.createPost);
+
+/**
+ * @swagger
+ * /posts/{id}:
+ *   patch:
+ *     summary: Update a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *     responses:
+ *       '200':
+ *         description: Successfully updated
+ *       '404':
+ *         description: Post not found
+ */
+router.patch("/:id", PostController.updatePost);
+
+/**
+ * @swagger
+ * /posts/{id}:
+ *   delete:
+ *     summary: Delete a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Successfully deleted
+ *       '404':
+ *         description: Post not found
+ */
+router.delete("/:id", PostController.deletePost);
+
+/**
+ * @swagger
+ * /posts/{id}/like:
+ *   put:
+ *     summary: Add a like to a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Post updated with a new like
+ *       '404':
+ *         description: Post not found
+ */
+router.put("/:id/like", PostLikeController.AddLikeToPost);
+
+/**
+ * @swagger
+ * /posts/{id}/like:
+ *   delete:
+ *     summary: Remove a like from a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Post updated, like removed
+ *       '404':
+ *         description: Post not found
+ */
+router.delete("/:id/like", PostLikeController.RemoveLikeFromPost);
+
+/**
+ * @swagger
+ * /posts/{id}/comments:
+ *   get:
+ *     summary: Retrieve all comments from a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: A list of comments.
+ *       '404':
+ *         description: Post not found
+ */
+router.get("/:id/comments", PostCommentController.allComments);
+
+/**
+ * @swagger
+ * /posts/{id}/comments:
+ *   post:
+ *     summary: Add a comment to a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *     responses:
+ *       '200':
+ *         description: Comment added
+ *       '404':
+ *         description: Post not found
+ */
+router.post("/:id/comments", PostCommentController.addCommentToPost);
+
+/**
+ * @swagger
+ * /posts/{id}/comments/{commentId}/like:
+ *   patch:
+ *     summary: Add a like to a comment
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - in: path
+ *         name: commentId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Comment updated with a new like
+ *       '404':
+ *         description: Comment not found
+ */
+router.patch(
+	"/:id/comments/:commentId/like",
+	PostCommentController.likeComment
+);
+
+/**
+ * @swagger
+ * /posts/{id}/comments/{commentId}/reply:
+ *   patch:
+ *     summary: Add a reply to a comment
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - in: path
+ *         name: commentId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *     responses:
+ *       '200':
+ *         description: Comment updated with a new reply
+ *       '404':
+ *         description: Comment not found
+ */
+router.patch(
+	"/:id/comments/:commentId/reply",
+	PostCommentController.replyComment
+);
+
+/**
+ * @swagger
+ * /posts/{id}/viewcount:
+ *   patch:
+ *     summary: Increase view count of a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: View count increased
+ *       '404':
+ *         description: Post not found
+ */
+router.patch("/:id/viewcount", PostViewController.viewCount);
 
 export default router;

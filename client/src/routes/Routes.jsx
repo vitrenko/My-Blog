@@ -1,6 +1,23 @@
 import { createBrowserRouter } from "react-router-dom";
-import { PublicLayout } from "../layouts";
-import { About, Blog, Contact, Home, NotFound, Post, Login } from "../pages";
+
+import { PrivateLayout, PublicLayout } from "../layouts";
+
+import AuthRoute from "./AuthRoute";
+import PrivateRoute from "./PrivateRoute";
+
+import { 
+    About, 
+    Blog, 
+    Contact, 
+    Home, 
+    NotFound, 
+    Post, 
+    Login, 
+    Registration, 
+    Dashboard,
+    DashboardPost,
+    DashboardPosts,
+} from "../pages";
 
 export const router = createBrowserRouter([
     {
@@ -31,11 +48,48 @@ export const router = createBrowserRouter([
                 path: "*",
                 element: <NotFound />,
             },
-            {
-                path: "/login",
-                element: <Login />,
-            },
-
         ]
-    }
+    },
+    {
+        element: <AuthRoute redirectPath={"/"} />,
+        children: [
+            {
+                element: <PublicLayout />,
+                children: [
+                    {
+                        path: "/login",
+                        element: <Login />,
+                    },
+        
+                    {
+                        path: "/registration",
+                        element: <Registration />,
+                    },
+        
+                ]
+            },
+        ],
+    },
+    {
+        element: <PrivateRoute redirectPath={"/login"} />,
+        children: [
+            {
+                element: <PrivateLayout />,
+                children: [
+                    {
+                        path: "/dashboard",
+                        element: <Dashboard />,
+                    },
+                    {
+                        path: "/dashboard/post",
+                        element: <DashboardPost />,
+                    },
+                    {
+                        path: "/dashboard/posts",
+                        element: <DashboardPosts url={"http://localhost:5000/posts"} />,
+                    },
+                ]
+            }
+        ],
+    },
 ]);

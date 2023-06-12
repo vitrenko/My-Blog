@@ -2,31 +2,31 @@ import multer from "multer";
 import path from "path";
 
 const storage = multer.diskStorage({
-  destination: "./public/uploads",
-  filename: (req, file, cb) => {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
+	destination: "./public/uploads",
+	filename: (req, file, cb) => {
+		cb(
+			null,
+			file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+		);
+	},
 });
 
 function checkFileType(file, cb) {
-  const filetypes = /jpeg|jpg|png|gif/;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
+	const filetypes = /jpeg|jpg|png|gif/;
+	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+	const mimetype = filetypes.test(file.mimetype);
 
-  if (mimetype && extname) {
-    return cb(null, true);
-  } else {
-    cb("Error: Images Only!");
-  }
+	if (mimetype && extname) {
+		return cb(null, true);
+	} else {
+		cb("Error: Images Only!");
+	}
 }
 
 export const Upload = multer({
-  storage: storage,
-  limits: { fileSize: 20000000 }, // limit file size to 20MB
-  fileFilter: (req, file, cb) => {
-    checkFileType(file, cb);
-  },
+	storage: storage,
+	limits: { fileSize: 20000000 }, // limit file size to 20MB
+	fileFilter: (req, file, cb) => {
+		checkFileType(file, cb);
+	},
 }).single("thumbnail");
