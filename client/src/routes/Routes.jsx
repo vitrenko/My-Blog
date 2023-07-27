@@ -19,6 +19,7 @@ import {
     DashboardPosts,
 } from "../pages";
 
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -86,7 +87,7 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: "/dashboard/posts",
-                        element: <DashboardPosts url={"http://localhost:5000/posts"} />,
+                        element: <DashboardPosts url={`${import.meta.env.VITE_APP_API_URL}/posts`} />,
                     },
                 ]
             }

@@ -6,6 +6,7 @@ import style from './Header.module.scss';
 
 import { AuthContext } from '../../context/auth';
 import { ThemeContext } from '../../context/themeContext';
+import { Button } from '@mui/material';
 
 const Header = () => {
 
@@ -53,7 +54,7 @@ const Header = () => {
                     </li>
                     <li>
                         {user ? (
-                            <button onClick={() => logout()}>Logout</button>
+                            <Button variant="contained" onClick={() => logout()}>Logout</Button>
                         ) : (
                             <NavLink
                                 to="/login"
@@ -62,6 +63,15 @@ const Header = () => {
                             </NavLink>
                         )}                       
                     </li>
+                    {user ? null : (
+                            <li>
+                                <NavLink
+                                    to="/registration"
+                                >
+                                    Registration
+                                </NavLink>
+                            </li>
+                        )} 
                     <li className={style.themeSwitcher}>
                         <button onClick={toggleTheme}>Change theme</button>
                     </li>

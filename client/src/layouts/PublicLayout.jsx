@@ -1,12 +1,14 @@
-import Header from "../components/Header/Header";
+import AppHeaderBar from "../components/AppHeaderBar/AppHeaderBar";
 import Footer from "../components/Footer/Footer";
 import { Outlet } from "react-router-dom";
+import UnderBarSpace from "../components/UnderBarSpace/UnderBarSpace";
     
 
 function PublicLayout() {
     return (
     <>
-        <Header />
+        <AppHeaderBar />
+        <UnderBarSpace />
         <Outlet />
         <Footer />
     </>)

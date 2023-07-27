@@ -1,6 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 
+import { Box, Button, TextField } from "@mui/material";
+import style from "./DashboardPosts.module.scss";
+
 function DashboardPost() {
     const [newPost, setNewPost] = useState({
         title: "",
@@ -28,8 +31,6 @@ function DashboardPost() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-
         try {
             const formData = new FormData();
             Object.entries(newPost).forEach(([key, value]) => {
@@ -60,46 +61,78 @@ function DashboardPost() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input 
-                type="text" 
-                name="title" 
-                value={newPost.title} 
-                onChange={handleChange} 
-                placeholder="Title" 
-            />
-            <input 
-                type="text" 
-                name="body" 
-                value={newPost.body} 
-                onChange={handleChange} 
-                placeholder="Body" 
-            />
-            <input 
-                type="text" 
-                name="tag" 
-                value={newPost.tag} 
-                onChange={handleChange} 
-                placeholder="Tag" 
-            />
-            <input 
-                type="text" 
-                name="categories" 
-                value={newPost.categories} 
-                onChange={handleCategoriesChange} 
-                placeholder="Categories" 
-            />
-            <input 
-                type="text" 
-                name="slug" 
-                value={newPost.slug} 
-                onChange={handleChange} 
-                placeholder="Slug" 
-            />
-            <input type="file" name="thumbnail" onChange={handleFileChange} />
+        <Box sx={{display: "flex", flexDirection: "column", width: "65%"}}>
+            <h1 style={{display: "block"}}>Create new post</h1>
+            <form onSubmit={handleSubmit} className={style.postForm}>
+                <TextField 
+                    label="Title" 
+                    variant="outlined" 
+                    type="text" 
+                    name="title" 
+                    value={newPost.title} 
+                    onChange={handleChange} 
+                    className={style.textField}
+                    placeholder="Title"  
+                />               
+                <TextField 
+                    label="Body" 
+                    variant="outlined"
+                    type="text" 
+                    name="body" 
+                    value={newPost.body} 
+                    onChange={handleChange} 
+                    className={style.textField}
+                    placeholder="Body" 
+                />
+                <TextField 
+                    label="Tag" 
+                    variant="outlined"
+                    type="text" 
+                    name="tag" 
+                    value={newPost.tag} 
+                    onChange={handleChange} 
+                    className={style.textField}
+                    placeholder="Tag" 
+                />
+                <TextField 
+                    label="Categories" 
+                    variant="outlined"
+                    type="text" 
+                    name="categories" 
+                    value={newPost.categories} 
+                    onChange={handleCategoriesChange} 
+                    className={style.textField}
+                    placeholder="Categories" 
+                />
+                <TextField 
+                    label="Slug" 
+                    variant="outlined"
+                    type="text" 
+                    name="slug" 
+                    value={newPost.slug} 
+                    onChange={handleChange} 
+                    className={style.textField}
+                    placeholder="Slug" 
+                />
+                <Button
+                    variant="outlined"
+                    component="label"
+                    className={style.button}
+                >
+                    Choose picture
+                    <input 
+                        type="file" 
+                        name="thumbnail" 
+                        onChange={handleFileChange} 
+                        hidden
+                    />
+                </Button>
+                
 
-            <button type="submit">Submit</button>
-        </form>
+                <Button variant="contained" className={style.button} type="submit">Submit</Button>
+            </form>
+        </Box>
+        
     )
     
 };

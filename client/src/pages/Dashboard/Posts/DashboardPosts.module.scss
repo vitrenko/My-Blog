@@ -16,3 +16,18 @@
         max-height: 200px;
     }
 }
+
+.postForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textField {
+    margin: 7px !important;
+}
+
+.button {
+    margin: 7px !important;
+    width: 281px;
+}
