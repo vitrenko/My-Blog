@@ -40,13 +40,20 @@ function TableRowPostItem({
         fetchPosts();
     }
 
+    const handleCancel = () => {
+        setEditing(false);
+    };
+
     const handleDelete =  () => {
         axios.delete(`${MAIN_URL}/posts/${_id}`);
         fetchPosts();
     }
 
     let viewMode = {};
-    let editMode = {};
+    let editMode = {
+        width: "100%",
+        resize: "vertical",
+    };
 
     if (editing) {
         viewMode.display = "none";
@@ -56,10 +63,10 @@ function TableRowPostItem({
 
     return (
         <TableRow>
-            <TableCell>
+            <TableCell sx={{width: "15%"}}>
                 <img src={thumbnail} style={{maxWidth: 200}} alt={title} />
             </TableCell>
-            <TableCell>                
+            <TableCell sx={{width: "15%"}}>               
                 <span style={viewMode}>{title}</span>
                 <input 
                     type="text"
@@ -70,9 +77,9 @@ function TableRowPostItem({
                     onKeyDown={handleUpdatedDone}
                 />
             </TableCell>
-            <TableCell>
+            <TableCell sx={{width: "25%"}}>
                 <span style={viewMode}>{body}</span>
-                <input 
+                <textarea 
                     type="text"
                     defaultValue={body}
                     name="body"
@@ -81,7 +88,7 @@ function TableRowPostItem({
                     onKeyDown={handleUpdatedDone}
                 />
             </TableCell>
-            <TableCell>
+            <TableCell sx={{width: "12%"}}>
                 <span style={viewMode}>{tag}</span>
                 <input 
                     type="text"
@@ -103,12 +110,12 @@ function TableRowPostItem({
                     onKeyDown={handleUpdatedDone}
                 /> 
             </TableCell>
-            <TableCell>
+            <TableCell sx={{width: "10%"}}>
                 <Button variant="contained" style={viewMode} onClick={handleEditing}>Edit</Button>
                 <Button variant="contained" style={editMode} onClick={handleSaving}>Save</Button>
-                <Button variant="outlined" style={editMode}>Cancel</Button>
+                <Button variant="outlined" style={editMode} onClick={handleCancel}>Cancel</Button>
             </TableCell>
-            <TableCell>
+            <TableCell sx={{width: "10%"}}>
                 <Button variant="contained" onClick={handleDelete}>Delete</Button>
             </TableCell>
         </TableRow>

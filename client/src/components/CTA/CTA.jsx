@@ -29,9 +29,7 @@ const CTA = (props) => {
 
     return (
         <div>
-            {
-                isMiddle && <button className={style.callButton} onClick={props.onClick}>Call Now!</button>
-            }
+            {isMiddle && <button className={style.callButton} onClick={props.onClick}>Call Now!</button>}
         </div>
     )
 

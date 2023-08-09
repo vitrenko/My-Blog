@@ -1,6 +1,11 @@
+import CreditCard from '../../components/CreditCard/CreditCard';
+
 function Dashboard() {
     return (
-        <p>This is Dashboard</p>
+        <>
+            <CreditCard />
+        </>
+        
     )
 }
 

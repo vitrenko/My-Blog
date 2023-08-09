@@ -22,4 +22,4 @@ export function ThemeProvider({ children }) {
             {children}
         </ThemeContext.Provider>
     )
-};
+}

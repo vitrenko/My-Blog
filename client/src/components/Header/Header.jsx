@@ -5,12 +5,10 @@ import { NavLink } from 'react-router-dom';
 import style from './Header.module.scss';
 
 import { AuthContext } from '../../context/auth';
-import { ThemeContext } from '../../context/themeContext';
 import { Button } from '@mui/material';
 
 const Header = () => {
 
-    const { theme, toggleTheme } = useContext(ThemeContext);
     const { user, logout } = useContext(AuthContext);
 
     return (
@@ -72,9 +70,6 @@ const Header = () => {
                                 </NavLink>
                             </li>
                         )} 
-                    <li className={style.themeSwitcher}>
-                        <button onClick={toggleTheme}>Change theme</button>
-                    </li>
                 </ul>
             </nav>
         </header>

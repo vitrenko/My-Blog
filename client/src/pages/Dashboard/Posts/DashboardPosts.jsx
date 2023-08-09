@@ -29,7 +29,7 @@ function DashboardPosts({url}) {
 
     return (
         <div>
-            <TableContainer component={Paper} variant="outlined" sx={{ margin: '0 auto', minWidth: 650, maxWidth: 1200 }}>
+            <TableContainer component={Paper} variant="outlined" sx={{ margin: '0 auto', minWidth: 650, maxWidth: 1490 }}>
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>

@@ -18,7 +18,6 @@ import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth';
-import { ThemeContext } from '../../context/themeContext';
 
 
 const drawerWidth = 240;
@@ -27,7 +26,6 @@ const navItems = ['Home', 'About', 'Contact'];
 export default function DrawerAppBar(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
-    const { theme, toggleTheme } = useContext(ThemeContext);
     const { user, logout } = useContext(AuthContext);
 
     const handleDrawerToggle = () => {

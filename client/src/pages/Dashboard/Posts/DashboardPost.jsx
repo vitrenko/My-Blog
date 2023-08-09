@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 
 import { Box, Button, TextField } from "@mui/material";
 import style from "./DashboardPosts.module.scss";
@@ -30,7 +29,7 @@ function DashboardPost() {
         }))
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async () => {
         try {
             const formData = new FormData();
             Object.entries(newPost).forEach(([key, value]) => {
@@ -41,11 +40,6 @@ function DashboardPost() {
                 } else {
                     formData.append(key, value);
                 }
-            });
-            const res = await axios.post("http://localhost:5000/posts", formData, {
-                headers: {
-                    "content-Type": "multipart/form-data",
-                },
             });
         } catch (error) {
             console.error("Error", error)
@@ -135,6 +129,6 @@ function DashboardPost() {
         
     )
     
-};
+}
 
 export default DashboardPost;

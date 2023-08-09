@@ -2,24 +2,37 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CTA from "../components/CTA/CTA";
 import Popup from "../components/Popup/Popup";
+import { PropagateLoader } from "react-spinners";
 
 const Home = () => {
-    const [posts, setPosts] = useState([]);
+    const [photos, setPhotos] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         const fetchPosts = async () => {
             try {
-                const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-                setPosts(res.data);
+                const res = await axios.get("https://jsonplaceholder.typicode.com/photos");
+                setPhotos(res.data);
+                setLoading(false);
             } catch(err) {
                 console.log(err);
             }
             
         };
         fetchPosts();
+
     }, []);
 
     const [popup, setPopup] = useState(false);
+    
+    const color = "#428ede";
+
+    const renderPosts = (posts) => {
+        return posts.map((post) => (
+            <li key={post.id}>{post.title}</li>
+        ));
+    };
 
 
     return (
@@ -29,10 +42,13 @@ const Home = () => {
                 HELLO EVERYBODY
             </Popup>
             <h1>Home</h1>
+            <PropagateLoader 
+                color={color}
+                loading={loading}
+                cssOverride={{display: "flex", placeContent: "center", marginTop: 50}}
+            />
             <ul>
-                {posts.map((post) => (
-                    <li key={post.id}>{post.body}</li>
-                ))}
+                {renderPosts(photos)}
             </ul>
         </>
     )

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import style from "./ContactForm.module.scss";
 
 import { useFormik } from 'formik';
@@ -7,28 +6,32 @@ import * as yup from "yup";
 import { TextField } from '@material-ui/core';
 import { Button } from "@mui/material";
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const ContactForm = () => {
-    const [contactData, setContactData] = useState({
-        email: "",
-        message: "",
+    const notify = () => toast.info('Thank you! We will contact you soon :)', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
     });
 
     const validSchema = yup.object({
         email: yup
             .string("Enter your email")
-            .email('Please enter a valid email')
+            .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email')
+            // .email('Please enter a valid email')
             .required("Email is required"),
         message: yup
             .string()
             .min(5, 'Message should be at least 5 characters long')
             .required("Message is required"),
     });
-
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setContactData(prevValues => ({...prevValues, [name]: value }));
-    };
 
     const formik = useFormik({
         initialValues: {
@@ -39,6 +42,7 @@ const ContactForm = () => {
         onSubmit: (values, { resetForm }) => {
             console.log(values);
             resetForm();
+            notify();
         },
     });
 

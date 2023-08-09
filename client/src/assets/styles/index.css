@@ -19,6 +19,9 @@ li {
     padding: 10px;
     margin: 10px;
 }
+body {
+    padding: 20px;
+}
 
 body.night {
     background-color: #000;
