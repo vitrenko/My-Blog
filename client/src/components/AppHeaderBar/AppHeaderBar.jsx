@@ -14,10 +14,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import HeaderNavigation from '../HeaderNavigation/HeaderNavigation';
 
-import { NavLink } from 'react-router-dom';
-
-import { AuthContext } from '../../context/auth';
+import { ThemeContext } from '../../context/themeContext';
 
 
 const drawerWidth = 240;
@@ -26,7 +25,6 @@ const navItems = ['Home', 'About', 'Contact'];
 export default function DrawerAppBar(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
-    const { user, logout } = useContext(AuthContext);
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
@@ -51,6 +49,7 @@ export default function DrawerAppBar(props) {
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
+    const { toggleTheme } = useContext(ThemeContext);
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -73,61 +72,9 @@ export default function DrawerAppBar(props) {
                 >
                     My Blog
                 </Typography>
-                <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                    <NavLink to="/">
-                        <Button sx={{ color: '#fff' }}>
-                            Home                
-                        </Button>
-                    </NavLink>
-                    <NavLink
-                        to="/about"
-                    >
-                        <Button sx={{ color: '#fff' }}>
-                            About                
-                        </Button>
-                    </NavLink>
-                    <NavLink
-                        to="/blog"
-                    >
-                        <Button sx={{ color: '#fff' }}>
-                            Blog                
-                        </Button>
-                    </NavLink>
-                    <NavLink
-                        to="/contact"
-                    >
-                        <Button sx={{ color: '#fff' }}>
-                            Contact us                
-                        </Button>
-                    </NavLink>
-                    <NavLink
-                        to="/dashboard"
-                    >
-                        <Button sx={{ color: '#fff' }}>
-                            Dashboard              
-                        </Button>
-                    </NavLink>
-                    {user ? (
-                        <Button sx={{ color: '#fff' }} onClick={() => logout()}>Logout</Button>
-                    ) : (
-                        <NavLink
-                            to="/login"
-                        >
-                            <Button sx={{ color: '#fff' }}>
-                                Login              
-                            </Button>
-                        </NavLink>
-                    )}
-                    {user ? null : (
-                        <NavLink
-                            to="/registration"
-                        >
-                            <Button sx={{ color: '#fff' }}>
-                                Registration              
-                            </Button>
-                        </NavLink>
-                    )}                    
-                </Box>
+                <HeaderNavigation />
+                <Button variant="contained" color="primary" onClick={toggleTheme}>CHANGE THEME</Button>
+                
             </Toolbar>
             </AppBar>
             <Box component="nav">

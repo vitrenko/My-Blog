@@ -87,7 +87,7 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: "/dashboard/posts",
-                        element: <DashboardPosts url={`${import.meta.env.VITE_APP_API_URL}/posts`} />,
+                        element: <DashboardPosts />,
                     },
                 ]
             }

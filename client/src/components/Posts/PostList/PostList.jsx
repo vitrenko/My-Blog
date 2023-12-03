@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import PostItem from "../PostItem/PostItem";
 
-import axios from "axios";
+import PostAPI from "../../../API/postAPI";
 
 const PostList = (props) => {
     const [posts, setPosts] = useState([]);
@@ -10,7 +10,7 @@ const PostList = (props) => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await axios.get(props.url);
+                const res = await PostAPI.getPlaceholderPosts();
                 setPosts(res.data);
             } catch(err) {
                 console.log(err);

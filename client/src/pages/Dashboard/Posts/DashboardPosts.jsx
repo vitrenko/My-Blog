@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import TableRowPostItem from "../../../components/TableRowPostItem/TableRowPostItem";
+import PostAPI from "../../../API/postAPI";
 import { 
     TableContainer,
     Table,
@@ -11,12 +11,12 @@ import {
     Paper
 } from "@mui/material";
 
-function DashboardPosts({url}) {
+function DashboardPosts() {
     const [posts, setPosts] = useState([]);
 
     const fetchPosts = async () => {
         try {
-            const res = await axios.get(url);
+            const res = await PostAPI.getMyPosts();
             setPosts(res.data.data);
             
         } catch(err) {

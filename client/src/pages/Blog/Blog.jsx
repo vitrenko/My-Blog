@@ -4,7 +4,7 @@ const Blog = () => {
     return (
         <>
             <h1>Blog</h1>
-            <PostList url="https://jsonplaceholder.typicode.com/posts/" />
+            <PostList />
         </>
     )
 };

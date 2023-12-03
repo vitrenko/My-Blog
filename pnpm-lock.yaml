@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -14,6 +14,9 @@ dependencies:
   '@fontsource/roboto':
     specifier: ^5.0.8
     version: 5.0.8
+  '@hookform/error-message':
+    specifier: ^2.0.1
+    version: 2.0.1(react-dom@17.0.2)(react-hook-form@7.45.4)(react@17.0.2)
   '@material-ui/core':
     specifier: ^4.12.4
     version: 4.12.4(react-dom@17.0.2)(react@17.0.2)
@@ -23,12 +26,18 @@ dependencies:
   '@mui/material':
     specifier: ^5.14.4
     version: 5.14.4(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(react-dom@17.0.2)(react@17.0.2)
+  '@reduxjs/toolkit':
+    specifier: ^1.9.5
+    version: 1.9.5(react@17.0.2)
   concurrently:
     specifier: ^8.2.0
     version: 8.2.0
   formik:
     specifier: ^2.4.3
     version: 2.4.3(react@17.0.2)
+  i18next:
+    specifier: ^23.4.4
+    version: 23.4.4
   jwt-decode:
     specifier: ^3.1.2
     version: 3.1.2
@@ -41,6 +50,12 @@ dependencies:
   react-creditcard-validator:
     specifier: ^1.0.6
     version: 1.0.6(react@17.0.2)
+  react-hook-form:
+    specifier: ^7.45.4
+    version: 7.45.4(react@17.0.2)
+  react-i18next:
+    specifier: ^13.1.2
+    version: 13.1.2(i18next@23.4.4)(react-dom@17.0.2)(react@17.0.2)
   react-payment-inputs:
     specifier: ^1.1.9
     version: 1.1.9(react@17.0.2)(styled-components@6.0.7)
@@ -483,6 +498,7 @@ packages:
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.22.10):
     resolution: {integrity: sha512-d2S98yCiLxDVmBmE8UjGcfPvNEUbA1U5q5WxaWFUGRzJSVAZqm5W6MbPct0jxnegUZ0niLeNX+IOzEs7wYg9Dg==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-object-rest-spread instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -1883,6 +1899,18 @@ packages:
     resolution: {integrity: sha512-XxPltXs5R31D6UZeLIV1td3wTXU3jzd3f2DLsXI8tytMGBkIsGcc9sIyiupRtA8y73HAhuSCeweOoBqf6DbWCA==}
     dev: false
 
+  /@hookform/error-message@2.0.1(react-dom@17.0.2)(react-hook-form@7.45.4)(react@17.0.2):
+    resolution: {integrity: sha512-U410sAr92xgxT1idlu9WWOVjndxLdgPUHEB8Schr27C9eh7/xUnITWpCMF93s+lGiG++D4JnbSnrb5A21AdSNg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+      react-hook-form: ^7.0.0
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+      react-hook-form: 7.45.4(react@17.0.2)
+    dev: false
+
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
     engines: {node: '>=10.10.0'}
@@ -2537,6 +2565,24 @@ packages:
 
   /@popperjs/core@2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
+
+  /@reduxjs/toolkit@1.9.5(react@17.0.2):
+    resolution: {integrity: sha512-Rt97jHmfTeaxL4swLRNPD/zV4OxTes4la07Xc4hetpUW/vc75t5m1ANyxG6ymnEQ2FsLQsoMlYB2vV1sO3m8tQ==}
+    peerDependencies:
+      react: ^16.9.0 || ^17.0.0 || ^18
+      react-redux: ^7.2.1 || ^8.0.2
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-redux:
+        optional: true
+    dependencies:
+      immer: 9.0.21
+      react: 17.0.2
+      redux: 4.2.1
+      redux-thunk: 2.4.2(redux@4.2.1)
+      reselect: 4.1.8
     dev: false
 
   /@rollup/plugin-babel@5.3.1(@babel/core@7.22.10)(rollup@2.79.1):
@@ -5957,6 +6003,12 @@ packages:
       terser: 5.19.2
     dev: false
 
+  /html-parse-stringify@3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+    dependencies:
+      void-elements: 3.1.0
+    dev: false
+
   /html-webpack-plugin@5.5.3(webpack@5.88.2):
     resolution: {integrity: sha512-6YrDKTuqaP/TquFH7h4srYWsZx+x6k6+FbsTm0ziCwGHDP78Unr1r9F/H4+sGmMbX08GQcJ+K64x55b+7VM/jg==}
     engines: {node: '>=10.13.0'}
@@ -6067,6 +6119,12 @@ packages:
 
   /hyphenate-style-name@1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
+    dev: false
+
+  /i18next@23.4.4:
+    resolution: {integrity: sha512-+c9B0txp/x1m5zn+QlwHaCS9vyFtmIAEXbVSFzwCX7vupm5V7va8F9cJGNJZ46X9ZtoGzhIiRC7eTIIh93TxPA==}
+    dependencies:
+      '@babel/runtime': 7.22.10
     dev: false
 
   /iconv-lite@0.4.24:
@@ -8872,6 +8930,35 @@ packages:
     resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
     dev: false
 
+  /react-hook-form@7.45.4(react@17.0.2):
+    resolution: {integrity: sha512-HGDV1JOOBPZj10LB3+OZgfDBTn+IeEsNOKiq/cxbQAIbKaiJUe/KV8DBUzsx0Gx/7IG/orWqRRm736JwOfUSWQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 17.0.2
+    dev: false
+
+  /react-i18next@13.1.2(i18next@23.4.4)(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-D/OJ/8ZQYscabsvbCAiOgvJq8W3feQF/VIV0to1w7V7UvrUE1IZ3hcalOckUYvKBd7BP3b8EPm+hop3J8sS+Mw==}
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.10
+      html-parse-stringify: 3.0.1
+      i18next: 23.4.4
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+    dev: false
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
@@ -9080,6 +9167,20 @@ packages:
       minimatch: 3.1.2
     dev: false
 
+  /redux-thunk@2.4.2(redux@4.2.1):
+    resolution: {integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==}
+    peerDependencies:
+      redux: ^4
+    dependencies:
+      redux: 4.2.1
+    dev: false
+
+  /redux@4.2.1:
+    resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}
+    dependencies:
+      '@babel/runtime': 7.22.10
+    dev: false
+
   /regenerate-unicode-properties@10.1.0:
     resolution: {integrity: sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ==}
     engines: {node: '>=4'}
@@ -9164,6 +9265,10 @@ packages:
 
   /requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+    dev: false
+
+  /reselect@4.1.8:
+    resolution: {integrity: sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==}
     dev: false
 
   /resolve-cwd@3.0.0:
@@ -10386,6 +10491,11 @@ packages:
   /vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /void-elements@3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
+    engines: {node: '>=0.10.0'}
     dev: false
 
   /w3c-hr-time@1.0.2:

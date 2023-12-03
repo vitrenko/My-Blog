@@ -25,7 +25,6 @@ const ContactForm = () => {
         email: yup
             .string("Enter your email")
             .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email')
-            // .email('Please enter a valid email')
             .required("Email is required"),
         message: yup
             .string()
