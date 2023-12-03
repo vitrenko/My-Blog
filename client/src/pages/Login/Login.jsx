@@ -32,7 +32,6 @@ function Login() {
 			try {
 				
 				const response = await axios.post(BASE_URL, values);
-				console.log(response, "12324");
 				
 				const result = response.data;
 				result && login(result);

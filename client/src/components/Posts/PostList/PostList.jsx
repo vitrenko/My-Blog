@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-
 import PostItem from "../PostItem/PostItem";
-
 import PostAPI from "../../../API/postAPI";
 
 const PostList = (props) => {
@@ -15,7 +13,6 @@ const PostList = (props) => {
             } catch(err) {
                 console.log(err);
             }
-            
         };
         fetchPosts();
     }, [])

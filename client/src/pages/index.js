@@ -4,6 +4,7 @@ import Contact from "./Contact";
 import Home from "./Home";
 import NotFound from "./NotFound/NotFound";
 import { Post } from "./Post";
+import Profile from "./Profile/Profile";
 import Login from "./Login/Login";
 import Registration from "./Registration/Registration";
 import Dashboard from "./Dashboard/Dashboard";
@@ -17,6 +18,7 @@ export {
     Home, 
     NotFound, 
     Post, 
+    Profile,
     Login, 
     Registration, 
     Dashboard, 

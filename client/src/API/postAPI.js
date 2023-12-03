@@ -1,4 +1,4 @@
-import { Gateway,  } from "../config/axios"
+import { Gateway, Placeholder } from "../config/axios"
 
 class PostAPI {
     getMyPosts = () => Gateway.get("/posts");

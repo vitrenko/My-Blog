@@ -3,6 +3,7 @@ import axios from "axios";
 import CTA from "../components/CTA/CTA";
 import Popup from "../components/Popup/Popup";
 import { PropagateLoader } from "react-spinners";
+import Profile from "./Profile/Profile";
 
 const Home = () => {
     const [photos, setPhotos] = useState([]);
@@ -42,6 +43,9 @@ const Home = () => {
                 HELLO EVERYBODY
             </Popup>
             <h1>Home</h1>
+
+            <Profile id={3} />
+
             <PropagateLoader 
                 color={color}
                 loading={loading}

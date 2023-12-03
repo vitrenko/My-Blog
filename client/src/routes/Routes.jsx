@@ -12,6 +12,7 @@ import {
     Home, 
     NotFound, 
     Post, 
+    Profile,
     Login, 
     Registration, 
     Dashboard,
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
                     {
                         path: "/dashboard/posts",
                         element: <DashboardPosts />,
+                    },
+                    {
+                        path: "/user/:id",
+                        element: <Profile />,
                     },
                 ]
             }

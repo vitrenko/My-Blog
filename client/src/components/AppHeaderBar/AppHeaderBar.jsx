@@ -37,13 +37,13 @@ export default function DrawerAppBar(props) {
         </Typography>
         <Divider />
         <List>
-        {navItems.map((item) => (
-            <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-                <ListItemText primary={item} />
-            </ListItemButton>
-            </ListItem>
-        ))}
+            {navItems.map((item) => (
+                <ListItem key={item} disablePadding>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                    <ListItemText primary={item} />
+                </ListItemButton>
+                </ListItem>
+            ))}
         </List>
     </Box>
     );
@@ -73,8 +73,13 @@ export default function DrawerAppBar(props) {
                     My Blog
                 </Typography>
                 <HeaderNavigation />
-                <Button variant="contained" color="primary" onClick={toggleTheme}>CHANGE THEME</Button>
-                
+                <Button 
+                    variant="contained"
+                    color="secondary"
+                    onClick={toggleTheme}
+                >
+                    CHANGE THEME
+                </Button>
             </Toolbar>
             </AppBar>
             <Box component="nav">
@@ -93,8 +98,7 @@ export default function DrawerAppBar(props) {
             >
                 {drawer}
             </Drawer>
-            </Box>
-            
+            </Box>       
         </Box>
     );
 }

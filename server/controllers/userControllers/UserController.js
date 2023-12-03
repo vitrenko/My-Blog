@@ -42,7 +42,9 @@ export const getUsers = async (req, res) => {
 	const privateFields = users.map((user) => {
 		return {
 			_id: user._id,
-			fullName: user.fullName,
+			fullName: `${user.firstName} ${user.lastName}`,
+			firstName: user.firstName,
+			lastName: user.lastName,
 			email: user.email,
 		};
 	});

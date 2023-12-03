@@ -1,9 +1,11 @@
 import CreditCard from '../../components/CreditCard/CreditCard';
+import Settings from './Settings/Settings';
 
 function Dashboard() {
     return (
         <>
-            <CreditCard />
+            <Settings />
+            {/* <CreditCard /> */}
         </>
         
     )

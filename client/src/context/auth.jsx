@@ -20,11 +20,13 @@ const AuthContext = createContext({
 });
 
 function authReducer(state, action) {
+    console.log(action.payload, "Action result");
+
     switch (action.type) {
         case "LOGIN":
             return {
                 ...state,
-                user: action.payload,
+                user: {...action.payload, id: action.payload._id},
             }
         case "LOGOUT":
             return {
@@ -41,6 +43,8 @@ const AuthProvider = (props) => {
     
     function login(userData) {
         localStorage.setItem("jwtDecode", userData.token);
+        sessionStorage.setItem("userID", userData.result._id);
+
         dispatch({
             type: "LOGIN",
             payload: userData,
@@ -49,6 +53,7 @@ const AuthProvider = (props) => {
 
     function logout() {
         localStorage.removeItem("jwtDecode");
+        sessionStorage.removeItem("userID");
         dispatch({type: "LOGOUT"});
     }
 

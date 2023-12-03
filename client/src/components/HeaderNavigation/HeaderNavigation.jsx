@@ -1,11 +1,7 @@
 import { useContext } from 'react';
-
 import { NavLink } from 'react-router-dom';
-
 import style from './Header.module.scss';
-
 import { AuthContext } from '../../context/auth';
-import { ThemeContext } from '../../context/themeContext';
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 
@@ -13,7 +9,6 @@ import Box from '@mui/material/Box';
 const HeaderNavigation = () => {
 
     const { user, logout } = useContext(AuthContext);
-    const { toggleTheme } = useContext(ThemeContext);
 
     return (
         <header className={style.header}>
