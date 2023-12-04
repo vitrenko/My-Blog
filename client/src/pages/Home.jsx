@@ -43,9 +43,6 @@ const Home = () => {
                 HELLO EVERYBODY
             </Popup>
             <h1>Home</h1>
-
-            <Profile id={3} />
-
             <PropagateLoader 
                 color={color}
                 loading={loading}

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import UserAPI from "../../API/userAPI";
-
 import { Button, TableRow, TableCell } from '@mui/material';
 
 function TableRowUserItem({
@@ -62,7 +60,7 @@ function TableRowUserItem({
 
     return (
         <TableRow>
-            <TableCell sx={{width: "15%"}}>               
+            <TableCell sx={{width: "20%"}}>               
                 <span style={viewMode}>{firstName}</span>
                 <input 
                     type="text"
@@ -73,7 +71,7 @@ function TableRowUserItem({
                     onKeyDown={handleUpdatedDone}
                 />
             </TableCell>
-            <TableCell sx={{width: "15%"}}>               
+            <TableCell sx={{width: "20%"}}>               
                 <span style={viewMode}>{lastName}</span>
                 <input 
                     type="text"
@@ -84,7 +82,7 @@ function TableRowUserItem({
                     onKeyDown={handleUpdatedDone}
                 />
             </TableCell>
-            <TableCell sx={{width: "25%"}}>
+            <TableCell>
                 <span style={viewMode}>{email}</span>
                 <textarea 
                     type="text"
@@ -95,12 +93,12 @@ function TableRowUserItem({
                     onKeyDown={handleUpdatedDone}
                 />
             </TableCell>
-            <TableCell sx={{width: "10%"}}>
+            <TableCell sx={{width: "15%"}}>
                 <Button variant="contained" style={viewMode} onClick={handleEditing}>Edit</Button>
                 <Button variant="contained" style={editMode} onClick={handleSaving}>Save</Button>
                 <Button variant="outlined" style={editMode} onClick={handleCancel}>Cancel</Button>
             </TableCell>
-            <TableCell sx={{width: "10%"}}>
+            <TableCell sx={{width: "15%"}}>
                 <Button variant="contained" onClick={handleDelete}>Delete</Button>
             </TableCell>
         </TableRow>

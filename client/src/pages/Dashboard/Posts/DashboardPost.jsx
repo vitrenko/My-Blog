@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Box, Button, TextField } from "@mui/material";
 import style from "./DashboardPosts.module.scss";
+import PostAPI from "../../../API/postAPI";
 
 function DashboardPost() {
     const [newPost, setNewPost] = useState({
@@ -30,7 +31,7 @@ function DashboardPost() {
     };
 
     const handleSubmit = async () => {
-        try {
+        // try {
             const formData = new FormData();
             Object.entries(newPost).forEach(([key, value]) => {
                 if (Array.isArray(value)) {
@@ -41,9 +42,10 @@ function DashboardPost() {
                     formData.append(key, value);
                 }
             });
-        } catch (error) {
-            console.error("Error", error)
-        }
+            PostAPI.addPost(formData);
+        // } catch (error) {
+        //     console.error("Error", error)
+        // }
     };
 
     const handleCategoriesChange = (e) => {
@@ -121,8 +123,6 @@ function DashboardPost() {
                         hidden
                     />
                 </Button>
-                
-
                 <Button variant="contained" className={style.button} type="submit">Submit</Button>
             </form>
         </Box>
