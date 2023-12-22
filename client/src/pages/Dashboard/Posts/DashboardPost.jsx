@@ -15,6 +15,7 @@ function DashboardPost() {
     });
 
     const handleChange = (e) => {
+        console.log("changed");
         const {name, value} = e.target;
         setNewPost((prevState) => ({
             ...prevState,
@@ -31,7 +32,8 @@ function DashboardPost() {
     };
 
     const handleSubmit = async () => {
-        // try {
+        console.log("hello");
+        try {
             const formData = new FormData();
             Object.entries(newPost).forEach(([key, value]) => {
                 if (Array.isArray(value)) {
@@ -42,10 +44,10 @@ function DashboardPost() {
                     formData.append(key, value);
                 }
             });
-            PostAPI.addPost(formData);
-        // } catch (error) {
-        //     console.error("Error", error)
-        // }
+            await PostAPI.addPost(formData);
+        } catch (error) {
+            console.error("Error", error)
+        }
     };
 
     const handleCategoriesChange = (e) => {
@@ -68,7 +70,8 @@ function DashboardPost() {
                     value={newPost.title} 
                     onChange={handleChange} 
                     className={style.textField}
-                    placeholder="Title"  
+                    placeholder="Title"
+                    required
                 />               
                 <TextField 
                     label="Body" 
@@ -78,7 +81,8 @@ function DashboardPost() {
                     value={newPost.body} 
                     onChange={handleChange} 
                     className={style.textField}
-                    placeholder="Body" 
+                    placeholder="Body"
+                    required
                 />
                 <TextField 
                     label="Tag" 

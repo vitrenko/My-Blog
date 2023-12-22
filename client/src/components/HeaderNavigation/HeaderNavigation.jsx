@@ -46,7 +46,16 @@ const HeaderNavigation = () => {
                         <Button sx={{ color: '#fff' }}>
                             Dashboard              
                         </Button>
-                    </NavLink>
+                    </NavLink>                   
+                    {user ? (
+                        <NavLink
+                            to="/myprofile"
+                        >
+                            <Button sx={{ color: '#fff' }}>
+                                My profile              
+                            </Button>
+                        </NavLink>
+                    ) : null}
                     {user ? (
                         <Button sx={{ color: '#fff' }} onClick={() => logout()}>Logout</Button>
                     ) : (

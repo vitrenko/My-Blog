@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
                         element: <DashboardPosts />,
                     },
                     {
-                        path: "/user/:id",
+                        path: "/myprofile",
                         element: <Profile />,
                     },
                 ]
